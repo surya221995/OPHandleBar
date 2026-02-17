@@ -1,0 +1,25 @@
+// Since you're storing images in the database (BLOB), the correct way is:
+
+// Backend: Convert image buffer → Base64
+
+// Frontend: Display using data:image/...;base64,
+
+    // Convert image buffer to base64
+
+
+
+
+    Content-Type is hardcoded to JPEG:
+
+If you upload PNG, the browser may fail. Better to store MIME type and serve dynamically:
+
+res.set("Content-Type", step.imageMimeType || "image/jpeg");
+
+
+Perfect! Storing the MIME type allows your backend to serve the correct content type (JPEG, PNG, GIF, etc.)
+ dynamically instead of hardcoding "image/jpeg". Here’s exactly what you need to change in 
+ your Step route and model.
+
+
+ req.file.mimetype comes from multer automatically.
+It could be "image/jpeg", "image/png", "image/gif", etc.

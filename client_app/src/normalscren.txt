@@ -1,0 +1,91 @@
+
+  return (
+    <div className="bg-light min-vh-100 d-flex align-items-center justify-content-center">
+      <div className="card shadow-lg p-4" style={{ width: "100%",height:"100%" }}>
+        <h3 className="text-center text-primary mb-4">
+           OPERATOR GUIDANCE SYSTEM 
+        </h3>
+         <h3 className="text-center text-primary mb-4">
+          📘 {taskName} 
+        </h3>
+
+        {/* Scanner */}
+        <form onSubmit={handleScan}>
+          <div className="input-group mb-4">
+            <input
+              type="text"
+              name="stepInput"
+              className="form-control form-control-lg"
+              placeholder="Scan Current Step Number"
+              autoFocus
+              required
+            />
+            <button
+              className="btn btn-primary btn-lg"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Scan"}
+            </button>
+          </div>
+        </form>
+
+        {/* Image */}
+        {imageUrl && (
+          <div className="text-center mb-4">
+            <h5 className="text-success mb-3">
+              Showing Step {currentStep}
+            </h5>
+            <img
+              src={imageUrl}
+              alt={`Step ${currentStep}`}
+              className="img-fluid rounded border"
+              style={{ maxHeight: "350px" }}
+            />
+          </div>
+        )}
+
+        {/* Step Progress BELOW Image */}
+        <div className="row text-center">
+          {[1, 2, 3, 4].map((step) => (
+            <div className="col-3" key={step}>
+              <div
+                className={`p-3 rounded fw-bold ${
+                  completedSteps.includes(step)
+                    ? "bg-success text-white"
+                    : "bg-white border"
+                }`}
+                style={{
+                  fontSize: "18px",
+                  transition: "0.3s",
+                }}
+              >
+                Step - {step}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Large Modal */}
+      {showModal && (
+        <div
+          className="modal fade show d-block"
+          style={{
+            backgroundColor: "rgba(0,0,0,0.7)",
+            backdropFilter: "blur(4px)",
+          }}
+        >
+          <div className="modal-dialog modal-dialog-centered modal-xl">
+            <div className="modal-content text-center p-5 rounded-4 shadow-lg">
+              <div className="modal-body py-5">
+                <h1 className="fw-bold display-4 text-success">
+                  {modalMessage}
+                </h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
