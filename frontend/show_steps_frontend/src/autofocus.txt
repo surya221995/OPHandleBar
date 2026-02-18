@@ -1,0 +1,106 @@
+current my auto focus for input is after refrecs i also want when user clecl on anywhere in window my auto focus should be on input field
+
+Perfect 👍 this is very common in scanner-based systems.
+
+Right now autoFocus only works on initial render.
+You want:
+
+✅ Auto focus on refresh
+✅ Auto focus when user clicks anywhere on screen
+✅ Always keep cursor inside input
+
+We’ll fix this properly using useRef.
+
+✅ Step 1 — Import useRef
+
+Update your import:
+
+import React, { useState, useEffect, useRef } from "react";
+
+✅ Step 2 — Create Input Ref
+
+Add this inside your component:
+
+const inputRef = useRef(null);
+
+✅ Step 3 — Auto Focus on Mount
+
+Add this useEffect:
+
+useEffect(() => {
+  if (inputRef.current) {
+    inputRef.current.focus();
+  }
+}, []);
+
+✅ Step 4 — Focus When Clicking Anywhere
+
+Add another useEffect:
+
+useEffect(() => {
+  const handleClick = () => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  window.addEventListener("click", handleClick);
+
+  return () => {
+    window.removeEventListener("click", handleClick);
+  };
+}, []);
+
+
+Now whenever user clicks anywhere in the window → input gets focus.
+
+✅ Step 5 — Attach Ref to Input
+
+Replace your input with this:
+
+<input
+  ref={inputRef}   // ✅ attach ref
+  type="text"
+  name="stepInput"
+  className="form-control text-center fw-bold p-3"
+  placeholder="Scan Current Step Number"
+  required
+  style={{
+    padding: "20px",
+    fontSize: "40px",
+    borderRadius: "12px",
+    border: "2px solid #007bff",
+    backgroundColor: "#f8f9fa",
+    color: "#333",
+    boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
+    textAlign: "center"
+  }}
+/>
+
+
+You can now remove autoFocus.
+
+🚀 BONUS (Very Important for Scanner Systems)
+
+After scanning, focus might get lost.
+So inside handleScan, add this at the end:
+
+if (inputRef.current) {
+  inputRef.current.focus();
+}
+
+🔥 Now Your System Will:
+
+✔ Focus on refresh
+✔ Focus on any screen click
+✔ Refocus after scan
+✔ Work perfectly for barcode scanner input
+
+If you want, I can also make it:
+
+• Impossible to blur
+• Disable mouse selection
+• Lock keyboard navigation
+• Make it full industrial operator mode
+
+Just tell me 😎
