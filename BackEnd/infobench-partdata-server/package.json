@@ -1,0 +1,33 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "server.js",
+"bin": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "set NODE_ENV=production && node server.js",
+    "dev": "set NODE_ENV=development && nodemon server.js",
+    "build": "pkg . --targets node18-win-x64 --output ../../deploy/backend/infobench-partdata-server/dist/server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+   "pkg": {
+    "assets": [
+      ".env.production"
+    ],
+    "scripts": [
+      "server.js"
+    ]
+  },
+  "description": "",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "mongoose": "^9.2.1",
+    "multer": "^2.0.2",
+    "pg": "^8.18.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  }
+}

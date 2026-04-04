@@ -1,0 +1,3 @@
+
+GET http://localhost:5000/api/steps/image/Test%20Task/1
+Frontend just uses /api/steps/image/:taskName/:stepNumber.
