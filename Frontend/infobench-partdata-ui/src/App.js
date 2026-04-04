@@ -8,12 +8,17 @@ function App() {
 
   return (
     <div className="container mt-4">
-      <h2 className="text-center text-primary mb-4">
-        OPERATOR GUIDANCE SYSYTEM
-      </h2>
+         <div className="text-center mb-4 p-4 rounded shadow-sm"
+     style={{
+       background: "linear-gradient(135deg, #007bff, #00c6ff)",
+       color: "white"
+     }}>
+  <h1 className="fw-bold mb-1">Operator Guidance System</h1>
+  <p className="mb-0">Manage tasks and guide operators efficiently</p>
+</div>
 
       {/* Tabs */}
-      <ul className="nav nav-tabs">
+      {/* <ul className="nav nav-tabs">
         <li className="nav-item">
           <button
             className={`nav-link ${activeTab === "create" && "active"}`}
@@ -22,6 +27,8 @@ function App() {
             Create Task
           </button>
         </li>
+
+      
 
         <li className="nav-item">
           <button
@@ -40,7 +47,26 @@ function App() {
             View Tasks
           </button>
         </li>
-      </ul>
+      </ul> */}
+
+       <ul className="nav nav-pills justify-content-center gap-3 mb-4">
+  {[
+    { key: "create", label: "➕ Create Task" },
+    { key: "steps", label: "🪜 Add Steps" },
+    { key: "view", label: "📋 View Tasks" },
+  ].map((tab) => (
+    <li className="nav-item" key={tab.key}>
+      <button
+        className={`nav-link px-4 py-2 fw-semibold ${
+          activeTab === tab.key ? "active custom-active" : "custom-tab"
+        }`}
+        onClick={() => setActiveTab(tab.key)}
+      >
+        {tab.label}
+      </button>
+    </li>
+  ))}
+</ul>
 
       <div className="mt-4">
         {activeTab === "create" && <CreateTask />}
