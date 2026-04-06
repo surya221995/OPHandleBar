@@ -1,5 +1,5 @@
 [Setup]
-AppName=Infobench UI MES Service
+AppName=Infobench OperatorGuidance System UI Service
 AppVersion=1.0.0
 AppPublisher=Infobench Solutions LLP
 AppPublisherURL=https://infobench.in

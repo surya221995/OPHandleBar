@@ -1,6 +1,6 @@
 [Setup]
 PrivilegesRequired=admin
-AppName=Infobench MES Service
+AppName=Infobench OperatorGuidance Server Service
 AppVersion=1.0.0
 AppPublisher=Infobench Solutions LLP
 AppPublisherURL=https://infobench.in

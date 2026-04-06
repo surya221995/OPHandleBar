@@ -389,7 +389,7 @@ import React, { useState, useEffect, useRef } from "react"; //useref for autofoc
 
 
 function App() {
-  const taskName = "HandleBar";
+  const taskName = "HandleBar Connection Checking";
   const inputRef = useRef(null);  //for auto focus
 
 
