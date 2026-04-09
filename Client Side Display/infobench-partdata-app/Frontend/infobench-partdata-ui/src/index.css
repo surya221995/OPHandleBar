@@ -1,0 +1,14 @@
+
+/* Set viewport on mobile */
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
+}
+
+/* custom variable for true visual height */
+:root {
+  --app-height: 100vh;
+}
